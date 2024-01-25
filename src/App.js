@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/dashboards/Home";
+import Users from "./pages/dashboards/Users";
+import Contact from "./pages/dashboards/contact";
+
+import "./App.css";
+import UserDetail from "./pages/dashboards/UserDetail";
+import Login from "./pages/auth/Login";
+import DashboardLayout from "./layout/Dashboard";
+import AuthLayout from "./layout/Auth";
+import Register from "./pages/auth/Register";
+import Error404 from "./pages/Error404";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<DashboardLayout />}>
+            <Route index element={<Home />} />
+            <Route path="users" element={<Users />} />
+            <Route path="users/:id" element={<UserDetail />} />
+            <Route path="contact" element={<Contact />} />
+          </Route>
+          <Route path="auth" element={<AuthLayout />}>
+            <Route index element={<Login />} />
+            <Route path="register" element={<Register />} />
+          </Route>
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

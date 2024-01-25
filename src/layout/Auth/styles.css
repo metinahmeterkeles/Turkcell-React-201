@@ -1,0 +1,17 @@
+.auth-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  flex-direction: column;
+}
+
+.auth-menu {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.auth-menu a {
+  text-decoration: none;
+}
