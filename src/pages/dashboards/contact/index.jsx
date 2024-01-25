@@ -23,6 +23,10 @@ const Contact = () => {
       await new Promise((r) => setTimeout(r, 1000));
       console.log(values);
 
+      if (values.email === "test@test.com") {
+        return bag.setErrors({ email: "Bu mail adresi zaten kullanılıyor!" });
+      }
+
       bag.resetForm();
     },
     validationSchema,
